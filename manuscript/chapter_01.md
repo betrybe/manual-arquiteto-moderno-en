@@ -1,4 +1,4 @@
-# The importance of learning concepts instead of new frameworks
+# The importance of learning concepts instead of new frameworks {#chapter_01}
 
 Writing this chapter may not be one of the most straightforward tasks since developers with a high level of experience (senior developers) are the target audience for this material. The intention, therefore, is not for an academic to say what professionals should study. But, mainly, to generate self-criticism on many subjects that could be explored in greater depth (and even the application of the famous expression "connect the dots") while we were in the training process (at the university).
 
@@ -119,6 +119,8 @@ Not only hash, but also binary trees, AVLs, or even B-Trees, so that the senior 
 Now, I am placing a high value on the analysis of algorithms, right? Want an example where analysis of algorithms may not be enough for a solution?
 
 A very common algorithm during graduation is the route and filling of matrices. This type of algorithm, regardless of whether it is filled in via rows x columns or columns x rows, in the unique and exclusive view of the analysis of algorithms, is irrelevant since both are asymptotic O(nˆ2). Look at these Java code snippets:
+
+
 
 **Snippet 1**: row x column filling
 
