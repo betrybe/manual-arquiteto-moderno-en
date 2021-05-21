@@ -10,6 +10,7 @@ This chapter covers the practical side of how these concepts can be mapped into 
 >  **INFO:** it is important to highlight that this chapter is not about the basic concepts of DDD, so if you are new to DDD, the following books are recommended: [Implementing DDD](https://www.amazon.co.uk/Implementing-Domain-Driven-Design-Vaughn-Vernon/dp/0321834577) and [DDD Distilled](https://www.amazon.co.uk/Domain-Driven-Design-Distilled-Vaughn-Vernon/dp/0134434420/ref=pd_lpo_14_t_1/262-0200870-8496500?_encoding=UTF8&pd_rd_i=0134434420&pd_rd_r=c7957a5b-3f2f-4008-8c93-8a9b5792c448&pd_rd_w=JKKyX&pd_rd_wg=dFALp&pf_rd_p=7b8e3b03-1439-4489-abd4-4a138cf4eca6&pf_rd_r=W41G9RPNEBHEF8Y5DXG8&psc=1&refRID=W41G9RPNEBHEF8Y5DXG8). 
 
 This chapter is divided into two main sections:
+
 - [Introduction to Java-related topics and Cloud](#java-in-the-cloud) 
 - [From Monolith to K8s using DDD](#from-monolith-to-k8s-using-ddd)
 
@@ -414,6 +415,8 @@ For this particular example, the conference scenario, we are looking at the Call
 You need to pay attention to your human/people interactions as these interactions tend to require asynchronous behaviors such as reminders, notifications, alerts, and User Interfaces, which will need to be carefully designed. 
 
 > **TIP:** As engineers, we tend to oversimplify and underestimate the amount of work and iterations that crafting a good user experience might take.
+
+{pagebreak}
 
 The User Interface that covers this simple scenario looks like this: 
 
