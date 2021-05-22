@@ -1,4 +1,4 @@
-# Refactoring
+# Refactoring {#chapter_03}
 
 After a few years on the road, developers realize they spend much of their time reading code and, most of the time, code written by other developers. It’s easily noticeable that this time is greater than the time spent writing new code lines. After all, it is necessary to understand the functioning of the current code, make changes, and, mainly, which classes or files will be impacted.
 
@@ -53,6 +53,6 @@ There are several motivations for refactoring the code, and here are some of the
 * **Refactoring to remove duplication**: reducing code within the project is a good motivation. When we are juniors, we tend to be happy when we add code, and as we get more experienced, we are pleased to reduce the code we need. One of the strategies to reduce the code is, precisely, to avoid duplication. This will guarantee you a single point for refactoring: ease of testing, as well as performance, primarily if you work within the JVM since JIT exists.
 * **Refactoring to use a library**: the best code, indeed, is the one we haven’t written. Reducing the amount of code means reducing the complexity on your side, in addition to reducing errors. This is excellent, especially when this library is already available within your project. It is worth noting that excessive dependencies can also be dangerous. Remember that the greater your dependencies, the greater the strategy for updating the libraries (in addition to the well-known "JAR Hell" problem).
 
-# Concluding
+## Conclusion
 
 With that, we conclude the topic of refactoring the code. We addressed essential aspects, such as the motivation to code refactoring besides its risks. As good developers, it is always important to balance motivations and avoid future code maintenance and readability problems. As always, common sense is the best tool for the developer.

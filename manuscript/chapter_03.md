@@ -1,4 +1,4 @@
-# Clean code
+# Clean code {#chapter_03}
 
 The great benefits obtained through the use of good coding practices are clear and recognized. Something you can quickly notice when working with clean and fluid code is better code readability and easier maintenance. However, when building applications and discussing architectural practices, there is another point that we can’t ignore: the integrity of the data that will be manipulated. Do good code practices reflect positively on that data integrity? One of the primary topics covered by the book [Clean Code](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship-ebook/dp/B001GSTOAM) is that, unlike structured programming, object orientation exposes behavior by hiding the data. With that in mind, in this chapter, we will discuss the advantages of using good coding practices and the benefits gained from implementing rich models.
 
@@ -113,9 +113,9 @@ public class Team {
 
 ```
 
-INFO: Many frameworks need the default constructor to exist for the sake of creating an instance from the reflection API. Since the goal is to discourage using the default constructor instead of the construction method, the constructor will be noted with [Deprecated](https://www.baeldung.com/java-deprecated). The Deprecated annotation indicates that this method should not be used.
+> **INFO**: Many frameworks need the default constructor to exist for the sake of creating an instance from the reflection API. Since the goal is to discourage using the default constructor instead of the construction method, the constructor will be noted with [Deprecated](https://www.baeldung.com/java-deprecated). The Deprecated annotation indicates that this method should not be used.
 
-As far as the `Player` class is concerned, all attributes will have default getters, except for the <code>end</code> attribute, which will have a special treatment: <code>getEnd</code> will return an `Optional`, once <code>end</code> can be null. Another point is the method <code>setEnd</code>, which will only be an integer if the last year is equal to or greater than the player's starting year, i.e., if he started playing in 2004, he could not have finished playing in 2002. Thus, the setter will have to validate at the moment of access.
+As far as the `Player` class is concerned, all attributes will have default getters, except for the <code>end</code> attribute, which will have a special treatment: `getEnd` will return an `Optional`, once `end` can be null. Another point is the method `setEnd`, which will only be an integer if the last year is equal to or greater than the player's starting year, i.e., if he started playing in 2004, he could not have finished playing in 2002. Thus, the setter will have to validate at the moment of access.
 
 ```java
 import java.math.BigDecimal;
@@ -504,7 +504,7 @@ public class Team {
 The source code for this example is available in the repository:
 [https://github.com/soujava/bulletproof](https://github.com/soujava/bulletproof).
 
-TIP: remember the importance of unit testing throughout the development process!
+> **TIP**: remember the importance of unit testing throughout the development process!
 
 This example demonstrates that only by using object-oriented concepts will you create fail-safe code. So far, all practices are database-agnostic, i.e., we can use these good practices regardless of the persistence technology that will be adopted.
 
@@ -520,4 +520,4 @@ In general, the Lombok project is a library famous for reducing the number of li
 
 * The powers of annotations are very tempting; however, encapsulation is not about having the private attributes and public getters and setters but ensuring that attributes are accessed with the least possible visibility.
 
-We want to clarify that the purpose of this topic is not to classify Lombok and its relationship regarding good programming practices. The intention is to show that, despite having its advantages - shown on several websites -, it is vital to bear in mind the problems caused by adopting this technology.
+We want to clarify that the purpose of this topic is not to classify Lombok and its relationship regarding good programming practices. The intention is to show that, despite having its advantages *shown on several websites*, it is vital to bear in mind the problems caused by adopting this technology.

@@ -1,5 +1,5 @@
 
-# I've been reading about DDD; where should I go next? 
+# I've been reading about DDD; where should I go next? {#chapter_02}
 
 You’ve been coding Java for many years now; you’ve read about Domain-Driven Design (DDD) and want to apply it to a real-life project. What does that look like? What does it actually mean to apply DDD in today’s ecosystem? Is it really worth the time? 
 
@@ -10,25 +10,30 @@ This chapter covers the practical side of how these concepts can be mapped into 
 >  **INFO:** it is important to highlight that this chapter is not about the basic concepts of DDD, so if you are new to DDD, the following books are recommended: [Implementing DDD](https://www.amazon.co.uk/Implementing-Domain-Driven-Design-Vaughn-Vernon/dp/0321834577) and [DDD Distilled](https://www.amazon.co.uk/Domain-Driven-Design-Distilled-Vaughn-Vernon/dp/0134434420/ref=pd_lpo_14_t_1/262-0200870-8496500?_encoding=UTF8&pd_rd_i=0134434420&pd_rd_r=c7957a5b-3f2f-4008-8c93-8a9b5792c448&pd_rd_w=JKKyX&pd_rd_wg=dFALp&pf_rd_p=7b8e3b03-1439-4489-abd4-4a138cf4eca6&pf_rd_r=W41G9RPNEBHEF8Y5DXG8&psc=1&refRID=W41G9RPNEBHEF8Y5DXG8). 
 
 This chapter is divided into two main sections:
+
 - [Introduction to Java-related topics and Cloud](#java-in-the-cloud) 
 - [From Monolith to K8s using DDD](#from-monolith-to-k8s-using-ddd)
 
 
-## Java in the Cloud
+## Java in the Cloud {#java-in-the-cloud}
 
 There are a lot of frameworks out there now aiming to provide an easier experience for developers creating microservices. Examples of this are Spring Boot, Quarkus, Micronaut, Helidon, etc. In general, these frameworks aim to create a standalone JAR file that can be executed, providing you a dependency-free executable that only requires the Java Virtual Machine (JVM) to run. 
 
 This pretty much goes in contrast with what we (as the Java Community) were doing five years ago, and some of us still do, which was to deploy our Java applications inside an Application Server or a Servlet Container such as Tomcat. 
 
 While we used to have a monolith with all the features of our large applications built inside, we now aim to have a set of well-defined services.  These new (micro)services share the following characteristics:
+
 - Tend to colocate and version all the artifacts needed to go from source code to a running service in an environment.
+
 - Each service is built, maintained, evolved, and deployed by a different team
+
 - Each service has its own release cycle 
+
 - Each service expose a well-defined set of APIs
 
 Building a Service today with REST endpoints is a relatively easy task if you use one of these frameworks previously mentioned. You have an annotation-based programming model that allows you to map Java Methods to REST endpoints and advanced Serialization/Deserialization mechanisms to deal with all the boilerplate of parsing HTTP requests. 
 
->  **TIP:** For more details regarding microservices architecture, refer to the [Microservices](chapter_07.md) chapter. 
+>  **TIP:** For more details regarding microservices architecture, refer to the [Microservices](#chapter_07) chapter. 
 
 The real problem arises when you start having more than a handful of services. Running each service in its own JVM will push you to run each service on a different port and take care of issues when these JVMs crash. For that reason, the industry quickly jumped to containers around 2015. 
 
@@ -46,7 +51,7 @@ When you have one Bounded Context and a few Services, you are probably fine just
 When the number of services grows, this becomes unmanageable. 
 For that reason, Container Orchestrators have become popular in the last few years, and Kubernetes is leading the way. Kubernetes is in charge of dealing with how to create these container runtimes, scale them when there is load, and deal with containers that are misbehaving or crashing. 
 
->  **TIP:** For more details regarding containers and orchestration tools, refer to the [Cloud](chapter_08.md) chapter.
+>  **TIP:** For more details regarding containers and orchestration tools, refer to the [Cloud](#chapter_08) chapter.
 
 Kubernetes success is based on the fact that each major cloud provider provides a managed Kubernetes Service, making it the defacto standard for multi-cloud support. In other words, no matter which Cloud Provider you choose, you can always trust that there will be a Kubernetes API exposed for you to interact and provision your services. 
 
@@ -60,7 +65,7 @@ I recommend the following article: [“The Business Value of using DDD”](https
 The following section covers an example that I’ve created based on my experience while re-architecting Java monolithic applications to a more distributed approach. The example is fictional; any similarity with reality is just a coincidence :) We encourage you to abstract the concepts and patterns away from the example scenario and map them to your own domain. At the end of the day, this is just an example, albeit a complex and fully functional one.
 
 
-## Evolving your monolith on practice, using DDD
+## Evolving your monolith on practice, using DDD {#from-monolith-to-k8s-using-ddd}
 
 This section covers an example scenario that helps us to explain some of the concepts in action. You can map these concepts to your business domain and copy the actual technical solution from the example for some of the challenges presented. 
 
@@ -84,10 +89,15 @@ As you can see in the red box, each Conference Site will contain a bunch of modu
 Now this monolith architecture has some apparent drawbacks, and for this scenario, we can consider the following reason to re-architect into a proper cloud-native platform:
 
 - Customers cannot be scaled independently
+
 - Customer traffic is all handled by the same application
+
 - Single Point of Failure in the JVM
+
 - If data is stored in a database, data is shared across customers. The application code needs to deal with isolating each customer data. The database becomes a bottleneck as well, as all customer data is in the same DB. 
+
 - Every change into the platform requires the entire application to be restarted
+
 - Every developer involved with the application works against the same code base, making a release and merging features a major task with many risks involved. This usually can be done by someone who understands the entire application.
 
 >  **TIP:**  If you already have this application up and running and you have customers using the platform, you will have a good understanding of which features are essential and how you can start re-architecting it. 
@@ -97,12 +107,14 @@ As Martin Fowler describes in the linked blog post [Monolith First](https://mart
 The next step in our journey is to decide where to start. In my experience, I’ve seen three common patterns repeating:
 
 - **Start new functionalities as separated services**: this is usually recommended if you can afford to maintain the monolith as it is. New services will not solve the already existing problems, but they will help your developer teams to get used to working with a microservice mindset.
+
 - **Split existing functionality out of the monolith** (and slowly deprecate the old code): if you have pressing issues with the monolith, you can evaluate branching off some of the functionality outside into a new service. This might solve some of your existing problems, but it will not bring any business value immediately. It also adds to the complexity of the day-to-day operations as you might end up running two solutions for the same problem over a long period. This can also be used to understand how complex and costly a core rearchitecture can be. 
-- ** Re-architect the core of the platform as microservices** (to tackle existing problems): Sooner or later, if you are experiencing problems maintaining and scaling your monolith, you will need to rethink and redesign the core bits of your platform, making sure that you focus on solving the current scalability and maintenance problems. This can be a costly initiative, but it can be done in complete isolation from your production environments. Several times, I’ve seen how this is done as a Proof of Concept to demonstrate that it is possible and make sure that your team members understand the implications from a business (advantages) and technical point of view (new tech stack, new tools).
+
+- **Re-architect the core of the platform as microservices** (to tackle existing problems): Sooner or later, if you are experiencing problems maintaining and scaling your monolith, you will need to rethink and redesign the core bits of your platform, making sure that you focus on solving the current scalability and maintenance problems. This can be a costly initiative, but it can be done in complete isolation from your production environments. Several times, I’ve seen how this is done as a Proof of Concept to demonstrate that it is possible and make sure that your team members understand the implications from a business (advantages) and technical point of view (new tech stack, new tools).
 
 In this chapter, I will cover the last of these options (**Rearchitect the core of the platform as microservices**) to highlight the solution for our existing problems with the monolith application, but you can explore the other two if they are more appropriate for your situation. 
 
->  **TIP:** More information regarding strategies and practices on how to migrate an existing monolith to microservices architecture can be found in the [Microservices](chapter_07.md) chapter.
+>  **TIP:** More information regarding strategies and practices on how to migrate an existing monolith to microservices architecture can be found in the [Microservices](#chapter_07) chapter.
 
 This is where DDD concepts and patterns become handy to define how to split the monolith's functionalities and how to organize our teams around the new services. In the following sections, we will explore some of these concepts in action.
 
@@ -145,7 +157,7 @@ The Call for Proposals Bounded Context will enable a team to implement all the n
 
 As soon as you start designing the Call for Proposal functionality, you realize that you will need to consume and interact with other teams. Very early on, the following Bounded Contexts are identified:
 
-![chapter_02_03](images/chapter_02_03.png)
+![](images/chapter_02_03.png)
 
 Each of these Bounded Contexts should be owned by different teams. We need to ensure that they have enough autonomy to make progress, create new versions with new features, and deploy concrete software components to our customer’s environments. 
 
@@ -154,7 +166,9 @@ On a practical side, each Bounded Context will be implemented as one or a set of
 For this example, a single service will implement all the Call For Proposals Bounded Context logic. The team behind this service will be responsible for designing its APIs, choosing the frameworks they are going to use, and deploying it into a live environment. 
 
 Going deep into practical details, there are a couple of best practices shared by many companies and tools: 
+
 - One Repository /  One Service + Continuous Delivery
+
 - Open APIs
 
 
@@ -171,6 +185,7 @@ You, as a developer targeting Kubernetes as your deployment platform, are now re
 ![](images/chapter_02_04.png)
 
 In order to deploy your code to Kubernetes, you will need to: 
+
 - Build and test your source code, if it is Java, you can use, for example, Maven or Gradle to do that;
 
 - That will result in a JAR file that you might want to push to a repository such as Nexus or Artifactory. This JAR file will already have a version in it, and if you are using Maven or Gradle, this JAR will be identified by its GAV (Group/Artifact/Version).
@@ -181,7 +196,7 @@ In order to deploy your code to Kubernetes, you will need to:
 
 - Optionally, if you are building many services, you might want to use Helm to package and release these YAML files. All these artifacts need to be versioned accordingly, meaning that when you build a new version of your JAR file, a new container needs to be built, and a new Helm Chart needs to be released. 
 
-  > **INFO:** Helm provides the idea of Charts (Packages) that map one to one with how we deal with our Maven artifacts. If you are working with Helm Charts, these charts are usually also pushed/released to a chart repository such as Chart Museum.  
+> **INFO:** Helm provides the idea of Charts (Packages) that map one to one with how we deal with our Maven artifacts. If you are working with Helm Charts, these charts are usually also pushed/released to a chart repository such as Chart Museum.  
 
 At this point, if you are thinking, ‘that is a lot of work,’ you are 100% right. If you are thinking, ‘I don’t want to do all of that,’ you are absolutely right. I don’t want to do that either. If you want this to work, you need to use specialized tools that already deliver all this functionality in an automated way. You should aim for automating every step, and the industry uses Continuous Integration pipelines to achieve this. Let's talk about delivering pipelines with Jenkins X.
 
@@ -193,7 +208,7 @@ As you might notice, Jenkins X is not only about Continuous Integration but also
 
 One of the conventions used by Jenkins X is called “Trunk Based Development”. It means that every change applied (merged) to the master branch will generate our artifacts' new release. Most of the time, this is not comfortable for developers, as most of these practices are commonly defined in each company, and they tend to vary quite a lot. The fundamental motivation to use something like Trunk Based Development is to make sure that teams don’t spend time defining these practices.  When working with this convention, you are enabled to focus on writing code and, when your code is done and merged in master, a new release is created and deployed to some kind of staging environment for further validations. 
 
-> **TIP:** I strongly recommend if you are starting a new project, to check the advantages of Trunk Based Development as well as the book Accelerate as it was used as the basis to create tools like Jenkins X. https://jenkins-x.io/about/overview/accelerate/
+> **TIP:** I strongly recommend if you are starting a new project, to check the advantages of Trunk Based Development as well as the book Accelerate as it was used as the basis to create tools like [Jenkins X](https://jenkins-x.io/about/overview/accelerate/).
 
 At the end of the day, Jenkins X uses both conventions, “One Repository / One Service” plus “Trunk Based Development”, to take your service from source code to a running instance inside a Kubernetes Cluster. 
 
@@ -201,10 +216,10 @@ At the end of the day, Jenkins X uses both conventions, “One Repository / One 
 
 In our example, the following links demonstrate all these concepts in action. 
 
-- Pipeline: https://github.com/salaboy/fmtok8s-email/blob/master/jenkins-x.yml 
-- DockerFile: https://github.com/salaboy/fmtok8s-email/blob/master/Dockerfile
-- Helm Charts: https://github.com/salaboy/fmtok8s-email/tree/master/charts/fmtok8s-email
-- Continuous Releases: https://github.com/salaboy/fmtok8s-email/releases
+- [Pipeline](https://github.com/salaboy/fmtok8s-email/blob/master/jenkins-x.yml)
+- [DockerFile](https://github.com/salaboy/fmtok8s-email/blob/master/Dockerfile)
+- [Helm Charts](https://github.com/salaboy/fmtok8s-email/tree/master/charts/fmtok8s-email)
+- [Continuous Releases](https://github.com/salaboy/fmtok8s-email/releases)
 
 You can find the same setup for all the projects inside the Conference Site Demo. 
 
@@ -236,7 +251,7 @@ If you are using Webflux, the reactive stack you need to add:
 </dependency>
 ```
 
-- https://github.com/salaboy/fmtok8s-email/blob/master/pom.xml#L40 
+- <https://github.com/salaboy/fmtok8s-email/blob/master/pom.xml#L40>
 
 In real-life projects, these user interfaces and API specification documents can be used by other teams to understand with concrete details about how to interact with your services. The sooner you get an API exposed, the sooner that other teams can start leveraging your service. 
 
@@ -244,7 +259,7 @@ The following screenshot shows the Open API User Interface that is provided by j
 
 ![chapter_02_06](images/chapter_02_06.png)
 
-Feel free to clone one of the services from this example and run it with the `mvn spring-boot:run` command to explore each service APIs definitions. By default, each service will start in port 8080, so you should point your browser at http://localhost:8080/swagger-ui.html.
+Feel free to clone one of the services from this example and run it with the `mvn spring-boot:run` command to explore each service APIs definitions. By default, each service will start in port 8080, so you should point your browser at <http://localhost:8080/swagger-ui.html>.
 
 ### Context Map to understand Team and Technical interactions
 
@@ -257,13 +272,13 @@ As you might guess, APIs are vital, but understanding who is going to consume ou
 Well-defined Context Maps help a lot to plan and understand how these “isolated" Bounded Context and teams working on them will interact daily. 
 
 For our example, the following context map would make sense:
-![chapter_02_07](images/chapter_02_07.png)
+![](images/chapter_02_07.png)
 
 This diagram depicts the relationships between the simple Bounded Context that we have for our Conference Site application. Here we can see a **Customer/Supplier** relationship between Call for Proposals and the Conference Agenda Bounded Context. Where Call for Proposals **is a consumer** of the upstream service Conference Agenda. There is a **Partnership** relationship between these two teams as well, as they need to collaborate to get things done. This means that the communication between these two teams is essential, and they should be able to influence each other’s roadmap. 
 
 On the other hand, the relationship with the Notification service is different. Call For Proposals has an upstream relationship with the Notification Bounded context, but it will **comfort** with their contracts. This means that from the Call for Proposals team perspective, they cannot influence or change the Notification Bounded Context APIs. This happens a lot when we have legacy systems or when this bounded context is external to our company. 
 
-> **TIP:** Jumping on the practical side, while System integrations is a vast topic, this section focuses on a very practical recommendation: “You must learn about Consumer-Driven Contact Testing”. Once again, Martin Fowler has an article published in 2006 about this: https://martinfowler.com/articles/consumerDrivenContracts.html.
+> **TIP:** Jumping on the practical side, while System integrations is a vast topic, this section focuses on a very practical recommendation: “You must learn about Consumer-Driven Contact Testing”. Once again, Martin Fowler has an article published in 2006 about this: <https://martinfowler.com/articles/consumerDrivenContracts.html>.
 
 While the topic itself is not new, there are very up-to-date tools to implement this in your projects, such as [Spring Cloud Contracts](https://spring.io/projects/spring-cloud-contract). 
 
@@ -271,7 +286,7 @@ While the topic itself is not new, there are very up-to-date tools to implement 
 
 With Spring Cloud Contracts, the story goes like this. First, you define a contact for your APIs; this basically means what kind of request the consumer should submit and what kind of response we need to provide as a service. 
 
-A contract looks like this: https://github.com/salaboy/fmtok8s-c4p/blob/no-workflow/src/test/resources/contracts/shouldAcceptPostProposal.groovy
+A contract looks like this: <https://github.com/salaboy/fmtok8s-c4p/blob/no-workflow/src/test/resources/contracts/shouldAcceptPostProposal.groovy>
 
 ```groovy
 Contract.make {
@@ -307,7 +322,7 @@ Contract.make {
 This contract defines the interaction for submitting a new Proposal to the Call for Proposal Service. As you can see, it involves a `POST` request and a body with some predefined properties, including a `header` with a very specific `Content Type`. This contract also defines that the return for the consumer will add to the information sent an `id` property with a `UUID` format. 
 
 Now, this contract can be used to generate a test to actually test that your service is working as expected from a consumer point of view. So, if you have defined any contract in your project when you build and test your project, the contracts will be executed against a real instance of your service. This enables us to make sure that we break the build if a contract was broken. In order to automatically create and execute these tests, you only need to add a dependency and a plugin to your maven project:
-https://github.com/salaboy/fmtok8s-c4p/blob/no-workflow/pom.xml#L50
+<https://github.com/salaboy/fmtok8s-c4p/blob/no-workflow/pom.xml#L50>
 
 ```xml
 <dependency>
@@ -319,7 +334,7 @@ https://github.com/salaboy/fmtok8s-c4p/blob/no-workflow/pom.xml#L50
 
 ```
 And in the `<build><plugins>` section the following plugin:
-https://github.com/salaboy/fmtok8s-c4p/blob/no-workflow/pom.xml#L88
+<https://github.com/salaboy/fmtok8s-c4p/blob/no-workflow/pom.xml#L88>
 
 ```xml
 <plugin>
@@ -335,7 +350,7 @@ https://github.com/salaboy/fmtok8s-c4p/blob/no-workflow/pom.xml#L88
 
 ```
 
-Finally, depending on the shape of the service that you will be testing, some confirmation might be needed: https://github.com/salaboy/fmtok8s-c4p/blob/no-workflow/src/test/java/com/salaboy/conferences/c4p/ContractVerifierBase.java#L16
+Finally, depending on the shape of the service that you will be testing, some confirmation might be needed: <https://github.com/salaboy/fmtok8s-c4p/blob/no-workflow/src/test/java/com/salaboy/conferences/c4p/ContractVerifierBase.java#L16>
 
 ```java
 @RunWith(SpringRunner.class)
@@ -374,13 +389,13 @@ public class C4PApisTests {
 }
 ```
 
-https://github.com/salaboy/fmtok8s-api-gateway/blob/master/src/test/java/com/salaboy/conferences/site/C4PApisTests.java#L29
+<https://github.com/salaboy/fmtok8s-api-gateway/blob/master/src/test/java/com/salaboy/conferences/site/C4PApisTests.java#L29>
 
 This automatically downloads the latest version of the Stub and runs it before your test starts using a random port that you can obtain via injection using `@StubRunnerPort`. 
 
 It is important to notice that both the service and the contracts are versioned together as part of the same code base. This implies that the generated Stub and the Service itself will have the same version. To run its tests, a consumer service can depend on the Stub, as it should never depend on the service itself. As soon as the consumer has tested using the producer Service Stub, you can quickly recognize when a contract is broken or when consumers no longer support a new version of the contract. The tests using the Stubs will break when new and incompatible versions are released. At this point, the consumers face a simple decision, stay depending on the old contracts with a fixed version or update to the latest version of the contract. As you can see, this might require you to run several versions of your service simultaneously; luckily for us, Kubernetes is built to support these scenarios. You might want to read about Canary Releases if you are interested in aspects of multi-version deployments.
 
-> **TIP:** The [Cloud](chapter_08.md) chapter covers Canary Releases as well as other deployment strategies.
+> **TIP:** The [Cloud](#chapter_08) chapter covers Canary Releases as well as other deployment strategies.
 
 Both, Bounded Contexts and Context Maps are great conceptual tools to understand how to structure your teams and your software, but more importantly, these concepts help you focus on business value. 
 
@@ -401,27 +416,35 @@ You need to pay attention to your human/people interactions as these interaction
 
 > **TIP:** As engineers, we tend to oversimplify and underestimate the amount of work and iterations that crafting a good user experience might take.
 
+{pagebreak}
+
 The User Interface that covers this simple scenario looks like this: 
 
 * The main page inside the Conference Site displays the Agenda divided by days. The items inside the Agenda are the ones that are already confirmed and were approved by the committee.
 
   ![chapter_02_08](images/chapter_02_08.png)
 
+  {pagebreak}
+
 * The main page also allows potential speakers to submit proposals by filling up a form:
 
   ![chapter_02_09](images/chapter_02_09.png)
+
+  {pagebreak}
 
 * Once the proposal is submitted, the potential speaker will need to wait for Approval or Rejection by the committee. The committee members have a back-office page where they can Approve or Reject each submitted proposal: 
 
   ![chapter_02_10](images/chapter_02_10.png)
 
+  {pagebreak}
+
 * The back-office page also offers Board members the option to send email notifications to the potential speakers.
 
   ![chapter_02_11](images/chapter_02_11.png)
 
-
-
 Once again, you can notice the simplification of this scenario on purpose to establish a base set of functionality, quickly iterate and get it working and then expand the requirements. 
+
+{pagebreak}
 
 #### Architecture and Services 
 
@@ -435,7 +458,7 @@ Most of the time, an API Gateway is also used to hide all the other services fro
 
 > **INFO:** It is vital to notice that Spring Cloud Gateway gives you the flexibility to add programmatically any transformation you want/need into the incoming requests. This power and freedom come with the drawback that then it is up to you to maintain, test, and bug fix. In large projects, you might want to evaluate a third-party API gateway (such as Kong, 3Scale, Apigee, etc.) based on your project requirements. 
 
-The API Gateway / User interface module can be found in this repository: https://github.com/salaboy/fmtok8s-api-gateway.
+The API Gateway / User interface module can be found in this repository: <https://github.com/salaboy/fmtok8s-api-gateway>.
 
 Which adds to its maven dependencies:
 
@@ -446,7 +469,7 @@ Which adds to its maven dependencies:
 </dependency>
 ```
 And configure the default routes for our services inside the application.yaml file: 
-https://github.com/salaboy/fmtok8s-api-gateway/blob/master/src/main/resources/application.yaml#L4
+<https://github.com/salaboy/fmtok8s-api-gateway/blob/master/src/main/resources/application.yaml#L4>
 
 ```yaml
 spring:
@@ -467,24 +490,24 @@ spring:
           - RewritePath=/email/(?<id>.*), /$\{id}
 ```
 
-These routes define a path into the gateway such as `/c4p/**` will automatically forward the request to the http://fmtok8s-c4p service.
+These routes define a path into the gateway such as `/c4p/**` will automatically forward the request to the <http://fmtok8s-c4p> service.
 
-> **INFO:** The user interface for the website can be found here: https://github.com/salaboy/fmtok8s-api-gateway/tree/master/src/main/resources/templates 
-> The Controller which fetches the data from the backend services here: https://github.com/salaboy/fmtok8s-api-gateway/blob/master/src/main/java/com/salaboy/conferences/site/DemoApplication.java
+> **INFO:** The user interface for the website can be found here: <https://github.com/salaboy/fmtok8s-api-gateway/tree/master/src/main/resources/templates>
+> The Controller which fetches the data from the backend services here: <https://github.com/salaboy/fmtok8s-api-gateway/blob/master/src/main/java/com/salaboy/conferences/site/DemoApplication.java>
 
 Because we are running in Kubernetes, we can use the Kubernetes Service name instead of point to a specific Pod. This routing mechanism enables us only to expose the API Gateway Endpoints to the outside world, leaving behind a secure network for all the other services.
 
 ### Domain Events and the Call for Proposals Service
 Because the flow under analysis is core to the Call For Proposals Bounded Context, it is no surprise that the core logic belongs to the Call For Proposal Service, more concretely to the following two pieces of functionality: Proposal Submission and Decision Made By the Board. 
 
-> **INFO:** The Call for Proposals Service can be found here:  https://github.com/salaboy/fmtok8s-c4p/
+> **INFO:** The Call for Proposals Service can be found here:  <https://github.com/salaboy/fmtok8s-c4p/>
 
 The Proposal Submission endpoint accepts a proposal from the User Interface and stores it in a Database or storage. This is an important step, and we need to make sure that we don’t lose proposals. Notice that we might be interested in emitting a DDD Domain Event at this point, as other systems/applications might be interested in reacting every time that a proposal is received. 
 
-> **INFO:** Check an actual implementation here: https://github.com/salaboy/fmtok8s-c4p/blob/no-workflow/src/main/java/com/salaboy/conferences/c4p/C4PController.java#L37
+> **INFO:** Check an actual implementation here: <https://github.com/salaboy/fmtok8s-c4p/blob/no-workflow/src/main/java/com/salaboy/conferences/c4p/C4PController.java#L37>
 
 More importantly, the Decision Made by the Board endpoint records a decision made by the board, but it also defines the following steps based on that decision. In real life, this decision will affect the course of action. Most of the time, these decision points and the actions derived by them are critical to run a cost-effective and efficient business. 
-https://github.com/salaboy/fmtok8s-c4p/blob/no-workflow/src/main/java/com/salaboy/conferences/c4p/C4PController.java#L60
+<https://github.com/salaboy/fmtok8s-c4p/blob/no-workflow/src/main/java/com/salaboy/conferences/c4p/C4PController.java#L60>
 
 ```java
 @PostMapping(value = "/{id}/decision")
@@ -533,7 +556,7 @@ Another solution might be to use a messaging or pub/sub mechanism to communicate
 
 Finally, a newer approach is Service Meshes, where we delegate the responsibility of retrying, for example,  to the infrastructure. Service Meshes uses proxies to inspect HTTP payloads and error codes so automatic retries can be done in case of failure.
 
-> **TIP:** You should check out Istio, Gloo, and LinkerD if you are interested in understanding more about how Service Meshes work and what their advantages are. More details about Service Meshes are shared on the [Cloud](chapter_08.md) chapter.
+> **TIP:** You should check out Istio, Gloo, and LinkerD if you are interested in understanding more about how Service Meshes work and what their advantages are. More details about Service Meshes are shared on the [Cloud](#chapter_08) chapter.
 
 #### Flow Buried in Code
 It is quite common to find complex business logic hidden inside our services, obscured in a way by all the boilerplate required to deal with technical errors, fetch data from different sources and transform data between different formats. In real-life projects, it gets pretty hard for Domain Experts to understand the code that implements their business flows. 
@@ -546,7 +569,7 @@ The example discussed in this chapter would become hard to read if we add the co
 
 There are no silver bullets to tackle these challenges. Still, I wanted to mention a couple of things that might help in your scenarios to reduce complexity and provide visibility about how your services are working. 
 
-Domain Events are introduced in DDD to externalize the application’s state that might be relevant for other services to consume. On a practical side, these events can be created using [Cloud Events](cloudevents.io), which provides a transport-agnostic format for exchanged events. 
+Domain Events are introduced in DDD to externalize the application’s state that might be relevant for other services to consume. On a practical side, these events can be created using [Cloud Events](https://cloudevents.io/), which provides a transport-agnostic format for exchanged events. 
 
 Service Orchestration tools can be used in conjunction with Cloud Events to externalize our services' buried business logic.
 
@@ -560,7 +583,7 @@ A short note on Legacy Systems, try to abstract them away to have control on top
 
 The Email Service provided doesn’t include an SMTP connection, but it exposes a set of APIs that are easy to consume and don’t require other services to include SMTP clients. 
 
-> **INFO:** The source code for this service can be found here: https://github.com/salaboy/fmtok8s-email
+> **INFO:** The source code for this service can be found here: <https://github.com/salaboy/fmtok8s-email>
 
 Consider creating Adapters for your legacy Services; remember that inside Kubernetes, even if the adapters are created in separate containers, these containers can be run inside the same host, avoiding an extra network hop. 
 
