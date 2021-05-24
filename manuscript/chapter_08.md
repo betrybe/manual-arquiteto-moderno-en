@@ -98,6 +98,7 @@ To create a project in which you can study examples of implementing cloud-native
 
 2. Insert a `groupId`,`artifactId`, select a version of MicroProfile, version of Java SE, and `runtime`.
 
+
 The `runtime` will be the implementation of the MicroProfile specification.
 
 ![](images/chapter_08_04.png)
@@ -184,7 +185,7 @@ I start this topic with a question for you:
 
 This is state-of-the-art continuous integration and delivery. But take it easy; even if your answer is no, integration and continuous delivery should still be part of your cloud-native journey. Continuous **Integration** and **Delivery** are themes so vast that each one has its own book. But let's talk about the main topics below.
 
-First of all, the base: <u>task automation</u>. "But how far should I automate?" you ask me. Let's see:
+First of all, the base: **task automation**. "But how far should I automate?" you ask me. Let's see:
 
 #### Continuous Integration (CI)
 

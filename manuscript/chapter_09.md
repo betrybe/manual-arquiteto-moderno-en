@@ -58,7 +58,7 @@ Just to give you an idea, JDK 9 had ninety-one items in its release, while JDK 1
 
 The company JRebel published in 2020 the results of a survey conducted with hundreds of developers worldwide. Below is one of the specific results concerning the Java versions:
 
-{width=60%}
+{width=75%}
 ![](images/chapter_09_01.png)
 
 Source: [https://www.jrebel.com/blog/2020-java-technology-report](https://www.jrebel.com/blog/2020-java-technology-report)

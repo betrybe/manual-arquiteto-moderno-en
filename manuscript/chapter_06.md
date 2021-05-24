@@ -201,7 +201,7 @@ In general, the persistence of the NoSQL world has two ways of communicating bet
 
 * *Masterless*: it is the communication model characterized by a multidirectional control by one or more devices. That is, there is no single node responsible for reading or writing. Each node might be responsible for both operations. Thus, there is no point of failure, and elasticity happens naturally; however, the information's consistency becomes more difficult since it takes a certain time for the nodes to have the most updated information.
 
-### Conclusion
+## Conclusion
 
 This chapter aimed to kick-start non-relational databases and discuss the main concepts about unstructured databases, database classes, and their structures. With this new paradigm of unstructured persistence, the doors are open for new possibilities and challenges in application implementations.
 

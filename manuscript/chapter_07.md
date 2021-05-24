@@ -96,7 +96,7 @@ It is pretty common to see a list of errors that all software have, especially w
 
 * Using microservices only because large companies use this type of architecture. In software architecture, a decision should not be made just by the popularity of the solution. As [Edson Yanaga](https://twitter.com/yanaga) talks about in his [book](https://developers.redhat.com/books/migrating-microservice-databases-relational-monolith-distributed-data/): “Certainly, we always read great things about the microservice architectures implemented by companies like Netflix or Amazon. So, let me ask you a question: how many companies in the world can be Netflix and Amazon?”.
 
-# Conclusion
+## Conclusion
 
 As seen, the microservice architecture brings many benefits to your environment. It offers you the advantage of leaving the development independent when you have several teams and features, and this independence also extends to the application deployment. In other words, you give your teams speed and agility and manage to have better quality code since it will be organized around functionality. It has the advantage of being easy to scale just when needed and still being applied in the technology that you have more control over.
 
