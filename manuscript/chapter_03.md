@@ -8,12 +8,12 @@ Considering an application that adopts clean code practices, the performance gai
 
 We are going to create a football player management application. We are going to have the concept of a `team`, and within a `team` the following information:
 
-- The name of the player, represented by the <code>name</code> attribute of the <code>Player</code> class;
+- The name of the player, represented by the `name` attribute of the `Player` class;
 - The position (`position` of the `Player` class) of the player (goalkeeper, forward, defender, and midfielder);
-- The year the player joined the team, represented by the <code>start</code> attribute of the <code>Player</code> class;
-- The year the player left the team, represented by the  <code>end</code> attribute of the <code>Player</code> class;
-- The number of goals the player scored on the team, represented by the <code>goals</code> attribute of the <code>Player</code> class;
-- The salary of the player, represented by the <code>salary</code> attribute of the <code>Player</code> class;
+- The year the player joined the team, represented by the `start` attribute of the `Player` class;
+- The year the player left the team, represented by the  `end` attribute of the `Player` class;
+- The number of goals the player scored on the team, represented by the `goals` attribute of the `Player` class;
+- The salary of the player, represented by the `salary` attribute of the `Player` class;
 - The contact email, in the `email` attribute;
 - The relationship with the team, represented by the `Team` class;
 - Keeping in mind the rule that says _a team should not have more than twenty members_.
@@ -115,7 +115,7 @@ public class Team {
 
 > **INFO**: Many frameworks need the default constructor to exist for the sake of creating an instance from the reflection API. Since the goal is to discourage using the default constructor instead of the construction method, the constructor will be noted with [Deprecated](https://www.baeldung.com/java-deprecated). The Deprecated annotation indicates that this method should not be used.
 
-As far as the `Player` class is concerned, all attributes will have default getters, except for the <code>end</code> attribute, which will have a special treatment: `getEnd` will return an `Optional`, once `end` can be null. Another point is the method `setEnd`, which will only be an integer if the last year is equal to or greater than the player's starting year, i.e., if he started playing in 2004, he could not have finished playing in 2002. Thus, the setter will have to validate at the moment of access.
+As far as the `Player` class is concerned, all attributes will have default getters, except for the `end`attribute, which will have a special treatment: `getEnd` will return an `Optional`, once `end` can be null. Another point is the method `setEnd`, which will only be an integer if the last year is equal to or greater than the player's starting year, i.e., if he started playing in 2004, he could not have finished playing in 2002. Thus, the setter will have to validate at the moment of access.
 
 ```java
 import java.math.BigDecimal;
