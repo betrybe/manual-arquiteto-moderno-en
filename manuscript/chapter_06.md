@@ -14,7 +14,7 @@ That was the context in which relational databases were created, including imple
 
 Time has passed, our technology has evolved and, therefore, another problem has arisen: we produce data in a considerable quantity, often in an unstructured and decentralized way with increasingly distributed systems.
 
-> **TIP:** _This data is called *unstructured* because it comes from several sources, such as IoT sensors (_Internet of Things, i.e., refrigerators connected to the internet, smartwatches, and autonomous cars), non-cataloged images and documents, among other examples._
+> **TIP:** _This data is called *unstructured* because it comes from several sources, such as IoT sensors (_Internet of Things, i.e., refrigerators connected to the internet, smartwatches, and autonomous cars), non-cataloged images and documents, among other examples.
 
 Structuring, i.e., organizing data from sources like these was (and is) possible but would require a lot of time. This extra time would impact the software development and delivery process and consequently led companies to lose the time to market for the solution being created. This problem needed to be solved, and, thus, NoSQL databases were born!
 
@@ -52,8 +52,6 @@ We must highlight two main advantages of a cluster, especially in very large dat
      - The system will become consistent at some point; in other words, it will eventually become consistent. As we do not have the replicated information "instantly", this concept is responsible for making the database consistent "in its time". That is because, depending on the cluster configurations, this replication may happen more quickly or not. But at some point, the information will be consistent and present on all cluster servers.
 
 Finally, another striking feature of unstructured databases is the absence of the `schema` or `flexible schema` characteristic. This means there is no need to define the data schema in advance. If, on the one hand, this makes adding new attributes more dynamic, on the other, it can impact the integrity of this data. Don't worry: in time, all of these concepts will become much clearer.
-
----
 
 ### NoSQL and its classes
 
@@ -203,7 +201,7 @@ In general, the persistence of the NoSQL world has two ways of communicating bet
 
 * *Masterless*: it is the communication model characterized by a multidirectional control by one or more devices. That is, there is no single node responsible for reading or writing. Each node might be responsible for both operations. Thus, there is no point of failure, and elasticity happens naturally; however, the information's consistency becomes more difficult since it takes a certain time for the nodes to have the most updated information.
 
-### Conclusion
+## Conclusion
 
 This chapter aimed to kick-start non-relational databases and discuss the main concepts about unstructured databases, database classes, and their structures. With this new paradigm of unstructured persistence, the doors are open for new possibilities and challenges in application implementations.
 

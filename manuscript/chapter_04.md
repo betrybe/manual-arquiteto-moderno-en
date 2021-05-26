@@ -16,11 +16,13 @@ We will start by talking about the strategy of dividing and conquering. That str
 
 > **TIP:** in architecture, pragmatism is crucial. An architect needs to solve a problem using technology as a means, not as an end. Therefore, the user does not need - and often does not want - to know which database or language is being used.
 
+{pagebreak}
+
 Look at the following image:
 
 ![](images/chapter_04_01.png)
 
-*Source: https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html*
+*Source: <https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html>*
 
 We will use the image above to discuss attention points that are worth applying in your architecture:
 
