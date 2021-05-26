@@ -2,10 +2,9 @@
 ![](images/autores__otavio.png)
 
 * **Name**: Otavio Santana
-
-* **Job Title**: Devrel Engineer
-
+* **Job Title**: Staff Engineer
 * **Bio:** Empowering developers worldwide to deliver better software faster, scalable in the Cloud. Otavio is a passionate software engineer focused on Cloud and Java technology. He has experience mainly in persistence polyglot and high-performance applications in finances, social media, and e-commerce. Otavio is a member of both Expert Groups and Expert Leader in several JSRs and JCP executive committee. He is working on several Apache and Eclipse Foundation projects such as Apache Tamaya, MicroProfile, Jakarta EE, where he is leading the first specification at Jakarta EE with Jakarta NoSQL. A JUG leader and global speaker at JavaOne and Devoxx conferences. Otavio has received recognition for his OSS contributions such as the JCP Outstanding Award, Member of the year and innovative JSR, Duke’s Choice Award, and Java Champion Award, to name a few.
+
 
   {pagebreak}
 
@@ -77,5 +76,4 @@
 * **Bio:** Professor Isidro is a Computer Science professor and researcher focused on Programming Fundamentals Teaching, Game Engine Development and Cloud Computing. Isidro mantains a Youtbe channel offering free content about Data Structures, Operating Systems, Web Development, Games and other subjects to all professionals and students who want to improve their knowledge and understand Computer Science and Software Development fundamentals. Speaker at Campus Party, The Developer's Conference, QCon and other conferences, Isidro is always helping developer communities offering technical content and carrer mentoring.
 
   {pagebreak}
-
   ![](images/insercao_1.jpg)
