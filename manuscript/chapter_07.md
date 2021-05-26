@@ -1,4 +1,4 @@
-# Microservice architecture
+# Microservice architecture {#chapter_07}
 
 With the popularization of cloud environments for software delivery, [microservice oriented architecture](https://www.martinfowler.com/articles/microservices.html) started to be increasingly adopted. How comfortable may the IT community feel about adopting this architecture?
 
@@ -10,7 +10,7 @@ Before diving into this architecture, let's briefly recap the challenges of mono
 
 In a monolithic architecture, we find an application whose front-end and back-end are part of a single artifact. This artifact contains all functional components, which are compiled and made available together. Scalability is impacted because whenever this application needs scaling, resources for the execution of all its components must be provided - even those that didn’t need scaling. In the persistence scenario, finding the relationship between a database and a monolith is pervasive. Still, some monoliths work accessing multiple databases (which further increases the level of maintenance complexity).
 
-![chapter_07_01](../images/chapter_07_01.png)
+![](images/chapter_07_01.png)
 
 Let's talk about the benefits of this architecture:
 
@@ -39,7 +39,7 @@ This is where the concept of microservices comes in, which begins to decouple th
 
 Microservice oriented architecture has as its precept the creation of applications decoupled from each other and modeled according to the business domain. These applications are integrated through different protocols, and the various communication patterns (REST, GRPC, asynchronous events, among others) can be adopted. With the adoption of a microservice oriented architecture, it is possible to promote faster and more frequent deliveries and bring an agnostic language ecosystem.
 
-![](../images/chapter_07_02.png)
+![](images/chapter_07_02.png)
 
 As pointed out by Sam Newman in his book "Building Microservices", these are concepts that are implicit in microservices:
 
@@ -96,7 +96,7 @@ It is pretty common to see a list of errors that all software have, especially w
 
 * Using microservices only because large companies use this type of architecture. In software architecture, a decision should not be made just by the popularity of the solution. As [Edson Yanaga](https://twitter.com/yanaga) talks about in his [book](https://developers.redhat.com/books/migrating-microservice-databases-relational-monolith-distributed-data/): “Certainly, we always read great things about the microservice architectures implemented by companies like Netflix or Amazon. So, let me ask you a question: how many companies in the world can be Netflix and Amazon?”.
 
-# Conclusion
+## Conclusion
 
 As seen, the microservice architecture brings many benefits to your environment. It offers you the advantage of leaving the development independent when you have several teams and features, and this independence also extends to the application deployment. In other words, you give your teams speed and agility and manage to have better quality code since it will be organized around functionality. It has the advantage of being easy to scale just when needed and still being applied in the technology that you have more control over.
 

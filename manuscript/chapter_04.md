@@ -1,3 +1,5 @@
+# Clean Architecture {#chapter_4}
+
 It is interesting how the concepts of Clean Architecture can be related in several aspects to Eric Evans’s book Domain-Driven Design. We can exemplify this relationship when the proposal to create a language close to the business is repeatedly mentioned in the DDD book: the ubiquitous language. Robert C. Martin’s book Clean Architecture proposes separating the business code, that is, not tying business rules with the chosen technology.
 
 > **INFO**: Clean architecture is an excellent book and is part of a "trilogy" whose reading is recommended: Clean Code: A Handbook of Agile Software Craftsmanship (Robert C. Martin Series); The Clean Coder: A Code of Conduct for Professional Programmers (Robert C. Martin Series); and finally Clean Architecture: A Craftsman's Guide to Software Structure and Design (Robert C. Martin Series). 
@@ -14,11 +16,13 @@ We will start by talking about the strategy of dividing and conquering. That str
 
 > **TIP:** in architecture, pragmatism is crucial. An architect needs to solve a problem using technology as a means, not as an end. Therefore, the user does not need - and often does not want - to know which database or language is being used.
 
+{pagebreak}
+
 Look at the following image:
 
-![](../images/chapter_04_01.jpg)
+![](images/chapter_04_01.png)
 
-*Source: https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html*
+*Source: <https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html>*
 
 We will use the image above to discuss attention points that are worth applying in your architecture:
 

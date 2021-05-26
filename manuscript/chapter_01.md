@@ -1,4 +1,4 @@
-# The importance of learning concepts instead of new frameworks
+# The importance of learning concepts instead of new frameworks {#chapter_01}
 
 Writing this chapter may not be one of the most straightforward tasks since developers with a high level of experience (senior developers) are the target audience for this material. The intention, therefore, is not for an academic to say what professionals should study. But, mainly, to generate self-criticism on many subjects that could be explored in greater depth (and even the application of the famous expression "connect the dots") while we were in the training process (at the university).
 
@@ -14,10 +14,10 @@ Consider the example of searching for objects in a database through an ORM. Depe
 
 Being aware that a `lazy fetch` with Hibernate, for instance, can generate much more asymptotic complexity than an `eager fetch` is paramount to a senior developer. That is because, for example, in a system for retrieving order headers and their respective items, a very large sequence of accesses to the database occurs in the first approach (lazy). Accesses to retrieve all order headers, and, for each order, one more sequence of accesses to the database. If we look at an algorithm with these characteristics, we will see something close to the following pseudocode:
 
-	1. retrieve a set of orders and store them in listP
-	2. for each order P in listP do
-	3. retrieve items I[] from order P from its ID
-	4. end-for
+	retrieve a set of orders and store them in listP
+	for each order P in listP do
+	retrieve items I[] from order P from its ID
+	end-for
 
 In a very general way, the execution of the instructions can be described as follows:
 
@@ -29,13 +29,13 @@ Thus, the complexity of this algorithm is O(n). This means that, as the set of v
 
 We can also extrapolate this algorithm and, for each item, retrieve the entire list of taxes, which can generate an algorithm of quadratic complexity O(n2). Look:
 
-	1. retrieve a set of orders and store them in listP
-	2. for each order P in listP[] do
-	3. 		retrieve items I[] from order P from its ID
-	4. 	for each item I of P, do
-	5. 		retrieve list L of taxes from I[]
-	6. 	end-for
-	7. end-for
+	retrieve a set of orders and store them in listP
+	for each order P in listP[] do
+		retrieve items I[] from order P from its ID
+	  for each item I of P, do
+		retrieve list L of taxes from I[]
+	  end-for
+	end-for
 
 In this case, analyzing the asymptotic complexity, we have:
 
@@ -55,7 +55,9 @@ What conclusion can we reach after all this discussion? It may not be a day-to-d
 We know that Data Structure is a subject that, for many undergraduate students, is dark and extremely abstract. However, knowing basic and advanced structures is essential to understand the tools we use in current systems.
 
 Want examples?
+
 - **Queues**: Apache Kafka, Rabbit MQ, MQTT, among others, are examples of tools that use the concepts of `queues` in their implementations. Not only single queues but also priority queues, which are also the object of study during the undergraduate period.
+
 - **Stacks**: Your IDE uses stacks all the time to check whether the open keys have been closed correctly (the language parser constantly uses stacks) or the parentheses that define the instructions in `Clojure` comply. That is just to cite immediate examples.
 
 In addition to these more "simple" examples (and I highlight the importance of quoting the term), we have more complex ones, which generate many performance differences in applications. For example: what is the difference between using Lists (whether they are Vectors or linked lists) and hash? The main difference is in the search performance. Take a look at this small example of a Java benchmark :
@@ -118,13 +120,21 @@ Now, I am placing a high value on the analysis of algorithms, right? Want an exa
 
 A very common algorithm during graduation is the route and filling of matrices. This type of algorithm, regardless of whether it is filled in via rows x columns or columns x rows, in the unique and exclusive view of the analysis of algorithms, is irrelevant since both are asymptotic O(nˆ2). Look at these Java code snippets:
 
-Snippet1: row x column filling
+
+
+**Snippet 1**: row x column filling
 
 	for (int i=0; i < TAM; i++)
 		for (int j=0; j < TAM; j++)
 			matrix[i][j] = valor;
 
-Fragment 2: filling column x row for (int i=0; i < TAM; i++) for (int j=0; j < TAM ; j++) matrix[j][i] = valor;
+**Snippet 2**: filling column x row
+
+```
+for (int i=0; i < TAM; i++)
+	for (int j=0; j < TAM ; j++)
+		matrix[j][i] = valor;
+```
 
 The interesting aspect about these codes is that, in practice, these two algorithms' performance is very different if the dimension of the matrix is ​​considerable (here, by considerable, we will think of values ​​above 5,000).
 
@@ -142,10 +152,10 @@ But you, as a developer, may ask yourself, "when will I create a new language?" 
 
 Difficult to answer, but with a tendency to seek challenges. A developer becomes senior more quickly when they deeply understand how technologies, libraries, and frameworks work behind the scenes. Therefore, we will try to answer that question (or perhaps even a provocation) by analyzing it from three perspectives.
 
-**Knowledge view**: obviously, you can (and should!) create your own framework at least once in your life, even if the only user of that framework is yourself. Why? This very one: knowledge. Silvio Meira (one of the leading influencers in computing in Brazil and the world) has already said in a talk that "*the computer professional who has never developed a compiler cannot consider themselves a complete professional, because a compiler requires you to know the entire syllabus of a computer science course*". And I dare to complement: develop a Game Engine too, as aspects of linear algebra and computer graphics are not often applied to a compiler. Like a game engine, a compiler requires the developer to *connect the conceptual dots* that have always been neglected.
+- **Knowledge view**: obviously, you can (and should!) create your own framework at least once in your life, even if the only user of that framework is yourself. Why? This very one: knowledge. Silvio Meira (one of the leading influencers in computing in Brazil and the world) has already said in a talk that "*the computer professional who has never developed a compiler cannot consider themselves a complete professional, because a compiler requires you to know the entire syllabus of a computer science course*". And I dare to complement: develop a Game Engine too, as aspects of linear algebra and computer graphics are not often applied to a compiler. Like a game engine, a compiler requires the developer to *connect the conceptual dots* that have always been neglected.
 
-**Corporate view**: can many companies adopt frameworks made by the community? Of course! However, there are strategic decisions within corporations so that their products do not depend on third-party technologies. Therefore, framework development teams are very common (mainly in the big players) for their products' internal use. This provides complete control over the technology they use. When these frameworks are mature enough, they can be made available and popularized by the community (under open source licenses). Or they are simply for internal and exclusive use, without access by development communities.
+- **Corporate view**: can many companies adopt frameworks made by the community? Of course! However, there are strategic decisions within corporations so that their products do not depend on third-party technologies. Therefore, framework development teams are very common (mainly in the big players) for their products' internal use. This provides complete control over the technology they use. When these frameworks are mature enough, they can be made available and popularized by the community (under open source licenses). Or they are simply for internal and exclusive use, without access by development communities.
 
-**Necessity view**: this can be a more immediate motivating agent because creating a framework aims to increase software development productivity. When the team's internal development processes are well defined, it is evident that the teams begin to see everyday needs and generate solutions for general use and specific purpose, whether they are back or front-end frameworks, ORM, or even at a lower level for code generation or optimization. The main objective of building technology like this is to invest time in creating a tool that will optimize the development time of an application (compare the development time of a Java database integration layer using pure JDBC or JPA, if there are still doubts).
+- **Necessity view**: this can be a more immediate motivating agent because creating a framework aims to increase software development productivity. When the team's internal development processes are well defined, it is evident that the teams begin to see everyday needs and generate solutions for general use and specific purpose, whether they are back or front-end frameworks, ORM, or even at a lower level for code generation or optimization. The main objective of building technology like this is to invest time in creating a tool that will optimize the development time of an application (compare the development time of a Java database integration layer using pure JDBC or JPA, if there are still doubts).
 
 Therefore, and to conclude, as the professional naturally becomes senior, their knowledge about the most diverse areas of expertise within computer science tends to become deeper and, at the same time, broader. Knowing a little about several things and specializing in just one of them is not enough. As complex problems become more common, the professional tends to be exposed to situations that require a lot of knowledge in various disciplines and how they are related to solving the problem. The famous "*connecting the dots*".
