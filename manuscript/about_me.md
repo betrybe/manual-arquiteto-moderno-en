@@ -75,6 +75,8 @@
 
 * **Bio:** Professor Isidro is a Computer Science professor and researcher focused on Programming Fundamentals Teaching, Game Engine Development and Cloud Computing. Isidro mantains a Youtbe channel offering free content about Data Structures, Operating Systems, Web Development, Games and other subjects to all professionals and students who want to improve their knowledge and understand Computer Science and Software Development fundamentals. Speaker at Campus Party, The Developer's Conference, QCon and other conferences, Isidro is always helping developer communities offering technical content and carrer mentoring.
 
+  {pagebreak}
+
 {width=60%}
 ![](images/autores__leandro.png)
 
