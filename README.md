@@ -34,7 +34,7 @@ This book emerged from Otávio Santana's initiative and became real through the 
 
 The group of initial authors is composed by Otávio Santana, Karina Varela and Sérgio Lopes, extending to big names such as Elder Moraes, Maurício Salatino (Salaboy), Sandro Giacomozzi, Francisco (Professor) Isidro, Leandro Domingues.
 
-With the popularization of the initiative, the community began to collaborate with the book's revision actively. Our thanks to all contributors: https://github.com/otaviojava/manual-arquiteto-moderno/graphs/contributors
+With the popularization of the initiative, the community began to collaborate with the book's revision actively. Our thanks to all contributors: https://github.com/betrybe/manual-arquiteto-moderno-en
 
 
 

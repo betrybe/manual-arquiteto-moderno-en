@@ -75,5 +75,12 @@
 
 * **Bio:** Professor Isidro is a Computer Science professor and researcher focused on Programming Fundamentals Teaching, Game Engine Development and Cloud Computing. Isidro mantains a Youtbe channel offering free content about Data Structures, Operating Systems, Web Development, Games and other subjects to all professionals and students who want to improve their knowledge and understand Computer Science and Software Development fundamentals. Speaker at Campus Party, The Developer's Conference, QCon and other conferences, Isidro is always helping developer communities offering technical content and carrer mentoring.
 
+{width=60%}
+![](images/autores__leandro.png)
+
+* **Name:** Leandro Domingues
+* **Job Title:** Founder at Cluster Consultoria, MongoDB Champion / Consulting Engineer, Microsoft Data Platform MVP, Community Manager, Speaker
+* **Bio:** MongoDB Champion, Microsoft Data Platform MVP, Top 50 Neo4j Certified with extensive experience in maintaining large volumes of data and critical applications, after several years working with relational databases, has redirected his career to NoSQL banks in the past 6 years. With all the experience accumulated in relational databases, today he works helping people and companies to enter or remain in the universe of NoSQL databases, participating from the idealization of projects to the maintenance of replicated and scalable environments, including data modeling to increase performance. As a developer, his career was traced based on .NET, but in recent years I have dedicated myself to OpenSource technologies, specializing in NodeJS and Python, maintaining Linux environments, etc. He constantly participates in national and international events in search of updating and knowledge, mainly in the OpenSource area. He conducts in-company training and open classes from MongoDB and Neo4j..
+
   {pagebreak}
   ![](images/insercao_1.jpg)
