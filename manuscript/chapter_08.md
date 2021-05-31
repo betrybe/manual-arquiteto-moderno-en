@@ -101,7 +101,7 @@ To create a project in which you can study examples of implementing cloud-native
 
 The `runtime` will be the implementation of the MicroProfile specification.
 
-![](images/chapter_08_04.png)
+![MicroProfile application creation page - MicroProfile Starter](images/chapter_08_04.png)
 
 3. Click on `Download`.
 
@@ -113,7 +113,7 @@ Notice in the code how the implementation of `Health Checks` APIs with liveness 
 
 In addition to using the MicroProfile specification for delivering cloud-native microservices, another widely used tool is [Spring Boot](https://spring.io/projects/spring-boot). It is also possible to build services that take advantage of cloud-native applications' capabilities using Spring and its stack. [Spring Cloud](https://cloud.spring.io/spring-cloud-static/spring-cloud.html) is one of the available frameworks that allow you to deliver cloud-native and Java applications. As demonstrated for MicroProfile, it is also possible to create applications simply: https://start.spring.io/. Note that by clicking on 'Add Dependencies`, you can filter by cloud and choose the components you want to enable in your application:
 
-![](images/chapter_08_06.png)
+![Spring application creation page - Spring initializr](images/chapter_08_06.png)
 
 Now, once we talk about implementing the application itself, let's move on and understand the best containerization practices for these applications.
 
@@ -272,13 +272,13 @@ We will discuss how *Infrastructure As A Service - IaaS*, *Platform As A Service
 
 The best way to think of the cloud in terms of abstraction for business is certainly in the analogy of a pizzeria as a service. We can start from the scenario where: we prepare the pizza at home and manage its entire creation and cooking process, or we go out to eat the pizza in a restaurant without worrying about its creation.
 
-![](images/chapter_08_01.png)
+![Representation of the different types of cloud offerings through the “Pizza as a Service” example.](images/chapter_08_01.png)
 
 In the image above, we have four formats available: on-premise, IaaS, PaaS, and SaaS. The white boxes tasks are our responsibility, and the blue boxes are third-party responsibilities. This same comparison can be made if we replace the tasks of creating pizza for tasks related to software creation: installation and management of the operating system, networking, storage, service orchestration, middleware management, runtime, CI/CD pipelines, and even the creation of the application per se.
 
 When we talk about the cloud and its services, note that the lower the abstraction we use as a service, for example, with IaaS, the greater the responsibility of building the software. This large number of processes will grow as the number of servers increases, and this complexity is directly proportional to the risks. In contrast, the lower the abstraction, the greater the control over the possibility of customizing the architecture and components.
 
-![](images/chapter_08_02.png)
+![Complexity vs Risk Matrix of the different types of cloud offering.](images/chapter_08_02.png)
 
 ### IaaS - Infrastructure as a Service
 
@@ -374,7 +374,7 @@ There are several options for implementing each of these features, and you can s
 
 CNCF takes on projects and classifies them as **graduated**, **incubating**, or in **sandbox**. This classification derives from the maturity of each software, according to its use in the market:
 
-![chasm-cncf](images/chapter_08_05.png)
+![What is “Chasm” and levels of technology adoption](images/chapter_08_05.png)
 
 *Image obtained at <https://www.cncf.io/projects/>*
 
@@ -438,7 +438,7 @@ To implement the ORASTAR rules, we have the architecture of a control panel and 
 
 `Data plan` is where all microservices and their sidecars are located, no matter how they are implemented. It is through a layer that the control panel interacts to control the services.
 
-![](images/chapter_08_03.png)
+![Representation of a Data Plane](images/chapter_08_03.png)
 
 ###### Tools
 
