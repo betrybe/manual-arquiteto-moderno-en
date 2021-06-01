@@ -78,7 +78,7 @@ As expected, creating a full-blown application is hard work and usually requires
 We begin our journey with a monolith Java application. The scenario that we will cover belongs to a company in charge of providing a platform to create Conference websites. Imagine that each of our customers requires us to host and scale their Conference website. 
 We all have seen big Java Web applications, and in this scenario, the application looks like this: 
 
-![chapter_02_01](images/chapter_02_01a.png)
+![Monolithic application for conference management.](images/chapter_02_01a.png)
 
 The “Customer Management” Facade is in charge of isolating different customers from each other. In some companies, this is defined as a multi-tenant platform or application. Unfortunately, this is quite common in the Java space. For historical reasons, implementations ended up growing into enormous, scary monoliths that came with a lot of scalability issues as well as data and traffic isolation challenges. No matter how fancy our platform looks, it is just running in a single JVM. You have no way of scaling each customer - you scale all or nothing. 
 
@@ -130,7 +130,7 @@ From an architectural point of view, this might mean a monolith Conference Site 
 > **TIP**: This strategy leads to having multiple services from day one, so this is something that you and your teams should get used to.
 
 Our independent Conference Sites will look like this: 
-![chapter_02_02](images/chapter_02_02.png)
+![Evolution of the monolithic conferences application to a distributed services architecture.](images/chapter_02_02.png)
 
 As you can see in the previous diagram, it is pretty clear that there are significant architectural changes. In this case, it is pretty common to have the User Interface, the “Conference Site” box separated from core services. This user-facing component will most of the time act as a router, routing requests from the Conference  Site to services that are not directly exposed to users. 
 
@@ -157,7 +157,7 @@ The Call for Proposals Bounded Context will enable a team to implement all the n
 
 As soon as you start designing the Call for Proposal functionality, you realize that you will need to consume and interact with other teams. Very early on, the following Bounded Contexts are identified:
 
-![](images/chapter_02_03.png)
+![Conference application's Bounded contexts.](images/chapter_02_03.png)
 
 Each of these Bounded Contexts should be owned by different teams. We need to ensure that they have enough autonomy to make progress, create new versions with new features, and deploy concrete software components to our customer’s environments. 
 
@@ -182,7 +182,7 @@ With the rise in popularity of Kubernetes, it is also common to find Kubernetes 
 
 You, as a developer targeting Kubernetes as your deployment platform, are now responsible for a bunch of artifacts, not just your Java Service source code. 
 
-![](images/chapter_02_04.png)
+![Good practices in an application deployment process in Kubernetes](images/chapter_02_04.png)
 
 In order to deploy your code to Kubernetes, you will need to: 
 
@@ -212,7 +212,7 @@ One of the conventions used by Jenkins X is called “Trunk Based Development”
 
 At the end of the day, Jenkins X uses both conventions, “One Repository / One Service” plus “Trunk Based Development”, to take your service from source code to a running instance inside a Kubernetes Cluster. 
 
-![chapter_02_05](images/chapter_02_05.png)
+![With the proposed practice, a repository represents a service that will be implemented.](images/chapter_02_05.png)
 
 In our example, the following links demonstrate all these concepts in action. 
 
@@ -257,7 +257,7 @@ In real-life projects, these user interfaces and API specification documents can
 
 The following screenshot shows the Open API User Interface that is provided by just including the previous dependency. This screen can be accessed by pointing your browser to host:port/swagger-ui.html, and it provides a simple client to interact with your services, understand which endpoints are exposed and which data these endpoints expect and return. 
 
-![chapter_02_06](images/chapter_02_06.png)
+![Swagger API interface](images/chapter_02_06.png)
 
 Feel free to clone one of the services from this example and run it with the `mvn spring-boot:run` command to explore each service APIs definitions. By default, each service will start in port 8080, so you should point your browser at <http://localhost:8080/swagger-ui.html>.
 
@@ -422,25 +422,25 @@ The User Interface that covers this simple scenario looks like this:
 
 * The main page inside the Conference Site displays the Agenda divided by days. The items inside the Agenda are the ones that are already confirmed and were approved by the committee.
 
-  ![chapter_02_08](images/chapter_02_08.png)
+  ![Main page of the conference application website with a list of confirmed and approved items](images/chapter_02_08.png)
 
   {pagebreak}
 
 * The main page also allows potential speakers to submit proposals by filling up a form:
 
-  ![chapter_02_09](images/chapter_02_09.png)
+  ![Call for Papers Form](images/chapter_02_09.png)
 
   {pagebreak}
 
 * Once the proposal is submitted, the potential speaker will need to wait for Approval or Rejection by the committee. The committee members have a back-office page where they can Approve or Reject each submitted proposal: 
 
-  ![chapter_02_10](images/chapter_02_10.png)
+  ![Approval page accessed by the event committee](images/chapter_02_10.png)
 
   {pagebreak}
 
 * The back-office page also offers Board members the option to send email notifications to the potential speakers.
 
-  ![chapter_02_11](images/chapter_02_11.png)
+  ![Page used by the organization to contact potential speakers](images/chapter_02_11.png)
 
 Once again, you can notice the simplification of this scenario on purpose to establish a base set of functionality, quickly iterate and get it working and then expand the requirements. 
 
@@ -449,7 +449,7 @@ Once again, you can notice the simplification of this scenario on purpose to est
 #### Architecture and Services 
 
 From an architectural perspective it might look more like this: 
-![chapter_01_12](images/chapter_01_12.png)
+![Conference application architecture and users](images/chapter_01_12.png)
 
 Where the User Interface with some routing capability is required to forward requests to the Call for Proposals Service (C4P) to the Agenda or Emails Service.  In this example, all the communications happen via HTTP/Rest invocations. 
 

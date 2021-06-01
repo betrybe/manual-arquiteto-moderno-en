@@ -20,7 +20,7 @@ We will start by talking about the strategy of dividing and conquering. That str
 
 Look at the following image:
 
-![](images/chapter_04_01.png)
+![The different application layers and how Clean Architecture practices preach about interactions between these layers](images/chapter_04_01.png)
 
 *Source: <https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html>*
 
